@@ -40,8 +40,7 @@ public class CompletableFutureTest {
         辅助方法 allOf 和 anyOf  anyOfExample();
      */
     public static void main(String[] args) throws Exception {
-        anyOfExample();
-        Thread.sleep(2000);
+
     }
 
     /**
@@ -201,9 +200,7 @@ public class CompletableFutureTest {
      * @date 2018年5月31日 上午10:58:03
      */
     static void whenCompleteExample() throws Exception {
-        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(CompletableFutureTest::getMoreData);// .exceptionally(e
-                                                                                                              // ->
-                                                                                                              // 100);
+        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(CompletableFutureTest::getMoreData);//.exceptionally(e -> 100);
         CompletableFuture<Integer> f = future.whenComplete((v, e) -> {
             System.out.println("v:" + v);
             // 异常
@@ -217,6 +214,7 @@ public class CompletableFutureTest {
         System.out.println("begin to start compute");
         try {
             Thread.sleep(1000);
+            int i = 1/0;
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
